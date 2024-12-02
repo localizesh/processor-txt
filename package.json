@@ -1,0 +1,30 @@
+{
+  "name": "@localizesh/processor-txt",
+  "repository": "localizesh/processor-txt",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc --project tsconfig.build.json",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.0.0",
+    "@types/mocha": "^10.0.9",
+    "chai": "^5.1.1",
+    "eol": "^0.10.0",
+    "mocha": "^10.7.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "peerDependencies": {
+    "@localizesh/sdk": "^0.2.0"
+  },
+  "dependencies": {
+    "unist-util-visit-parents": "^6.0.1"
+  }
+}
