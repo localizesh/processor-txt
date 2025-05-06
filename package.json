@@ -13,7 +13,7 @@
     "test": "mocha"
   },
   "devDependencies": {
-    "@types/chai": "^5.2.1",
+    "@types/chai": "^5.2.2",
     "@types/mocha": "^10.0.9",
     "chai": "^5.2.0",
     "eol": "^0.10.0",
