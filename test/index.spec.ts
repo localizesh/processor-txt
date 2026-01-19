@@ -1,32 +1,31 @@
-import {assert} from "chai";
-import eol from "eol";
+import { assert, describe, it } from "vitest";
 import fs from "fs";
 import path from "path";
-
 import TxtProcessor from "../src/index.js";
 
 const processor = new TxtProcessor();
 
 function processAndCompare(filename: string) {
-    const inDoc = eol.lf(fs.readFileSync(path.join('test', 'fixtures', filename), { encoding: 'utf-8' }));
+  const fixturePath = path.join("test", "fixtures", filename);
+  const inDoc = fs.readFileSync(fixturePath, {
+    encoding: "utf-8",
+  });
 
-    const doc = processor.parse(inDoc);
-    const docStr = JSON.stringify(doc);
+  const doc = processor.parse(inDoc);
+  const outDocStr = processor.stringify(doc);
 
-    const outDoc = eol.lf(processor.stringify(doc));
-    const outDocStructure = processor.parse(outDoc);
+  // For TXT, we expect exact roundtrip
+  assert.equal(outDocStr, inDoc);
 
-    const outDocStructureStr = JSON.stringify(outDocStructure);
-
-    assert.equal(outDocStructureStr, docStr);
-    console.log(filename);
+  console.log(`${filename} passed`);
 }
 
-describe('TxtProcessorTest', function() {
-    it('documents should be equal', function() {
-        processAndCompare('typical.txt');
+describe("Fixture Round-trip", function () {
+  const fixtures = ["typical.txt", "empty.txt", "multiline.txt"];
+
+  fixtures.forEach((filename) => {
+    it(`should match original structure for ${filename}`, function () {
+      processAndCompare(filename);
     });
+  });
 });
-
-
-
