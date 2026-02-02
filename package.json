@@ -1,5 +1,6 @@
 {
   "name": "@localizesh/processor-txt",
+  "description": "A Localize.sh processor for TXT files",
   "repository": "localizesh/processor-txt",
   "license": "Apache-2.0",
   "type": "module",
@@ -17,10 +18,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@localizesh/sdk": "^1.0.0",
-    "eol": "^0.10.0",
-    "hastscript": "^9.0.1",
-    "unist-builder": "^4.0.0"
+    "@localizesh/sdk": "^2.1.0",
+    "eol": "^0.10.0"
   },
   "devDependencies": {
     "@types/node": "^25.0.9",
